@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      /* optional: to evenly distribute the elements */
+      align-items: center;
+      /* optional: to vertically center the elements */
+    }
+
+    .container>div {
+      display: inline-block;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static 'tasks/add_task.css' %}">
+</head>
+
+<body>
+  <div id="user">
+    {{user.username}}
+  </div>
+
+
+  <div id="dashboard" class="blur">
+    {% include 'tasks/dashboard.html' %}
+  </div>
+
+  <form>
+    <a href="{% url 'dashboard' %}"><img width="30px" src="{% static 'tasks/arrow-left.svg' %}"></a>
+    <h2 style="color: beige;">{{user.first_name}}'s statistics</h2>
+    <hr>
+    <br>
+    <div class="container">
+      <div class="number">
+        <h4>Number of tasks</h4>
+        <p>   {{ num_tasks|length }}</p>
+      </div>
+      <div class="completed">
+        <h4>Tasks completed</h4>
+        test2
+      </div>
+      <div class="skipped">
+        <h4>Tasks skipped</h4>
+        test3
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+  </form>
+
+</body>
+
+</html>

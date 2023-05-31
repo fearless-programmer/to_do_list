@@ -1,0 +1,79 @@
+/* styles for user's name */
+#user {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-style: italic;
+    font-size: smaller;
+  }
+  
+  /* styles for input fields */
+  input[type="text"],
+  select {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  /* styles for input field placeholders */
+  ::placeholder {
+    color: #6e6b6b;
+  }
+  
+  /* styles for add task button */
+  .card {
+    position: relative;
+    /* Other card styles */
+  }
+  
+  #addTaskBtn {
+    position: absolute;
+  bottom: 20px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2d485e;
+  color: #F5DEB3;
+  font-size: 16px;
+  margin-right: 10px;
+  }
+  @media only screen and (max-width: 480px) {
+    form {
+        max-width: 100%;
+        /* other mobile styles */
+    }
+  }
+  
+  
+  /* styles for blurred background */
+  .blur {
+    filter: blur(5px);
+  }
+  
+  /* styles for form */
+  form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(56, 62, 77, 0.5);
+    max-height: 100%;
+    overflow: auto;
+  }
+  
+  @media (min-width: 768px) {
+    form {
+      width: 50%;
+    }
+  }
+  

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'tasks/add_task.css' %}">
+    
+</head>
+
+<body>
+    <div id="user">
+        {{user.username}}
+    </div>
+
+
+    <div id="dashboard" class="blur">
+        {% include 'tasks/dashboard.html' %}
+    </div>
+    <form>
+        <a href="{% url 'dashboard' %}"><img width="30px" src="{% static 'tasks/arrow-left.svg' %}"></a>
+
+        <h1 style="font-style: oblique;">{{user.first_name}}'s Tasks </h1>
+        <hr>
+        <br>
+
+        <ul>
+            {% for task in tasks %}
+            <li><a href="{% url 'task_view' task.id %}" style="text-decoration: none; color:rgb(76, 24, 35)  ; ">{{ task.title }}</a></li>
+
+            {% empty %}
+            <li>No tasks found.</li>
+            {% endfor %}
+        </ul>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Plan hub </title>
+  <link rel="stylesheet" href="{% static 'darkmode/calendar/css/theme2.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'darkmode/dark_style.css' %}">
+  <style>
+    @media (max-width: 768px) {
+      .tasks-boxes {
+        flex-direction: column;
+      }
+
+      .recent-tasks.box,
+      .col-md-6 {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+
+
+
+  <script type="text/javascript" src="{% static 'darkmode/calendar/js/caleandar.min.js' %}"></script>
+
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <style>
+    .row {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar active" >
+    <div class="logo-details">
+
+      <img class="bx" src="{% static 'tasks/logo.jpg' %}" alt="Plan hub logo" style="height: 40px;">
+      <span class="logo_name" style="margin-left: 10px;">Plan Hub</span>
+
+    </div>
+    <ul class="nav-links">
+      </li>
+      <li>
+        <a href="{% url 'create-new-task2' %}">
+          <i class='bx bx-list-ul'></i>
+          <span class="links_name">Add Tasks</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'task_list2' %}">
+          <i class='bx bx-calendar'></i>
+          <span class="links_name">My tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'statistics2' %}">
+          <i class='bx bx-bar-chart-alt-2'></i>
+          <span class="links_name">Statistics</span>
+        </a>
+      <li>
+        <a href="{% url 'profile2' %}">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Profile</span>
+        </a>
+      </li>
+      </li>
+      <li>
+        <a href="{% url 'dashboard' %}">
+          <i class='bx bx-sun'></i>
+
+          <span class="links_name" name='lll'>Light mode</span>
+        </a>
+        
+      </li>
+      </li>
+      <li class="log_out">
+        <a href="{% url 'logout' %}">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button" style = " color: #fff; ">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard"  >Welcome, {{ user.first_name }}!</span>
+      </div>
+      <!-- <div class="search-box">
+        <input type="text" placeholder="Search for tasks...">
+        <i class='bx bx-search'></i>
+      </div> -->
+
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        {% for task in deadline_tasks %}
+        <div class="box">
+          <!-- <p>Recent Task</p> -->
+          <div class="right-side">
+            <a href="{% url 'task_view2' task.id %}" class="right-side" style="text-decoration: none; color: #4682B4;">
+              <div class="box-topic" ><b>{{ task.title|truncatechars:25 }}</b></div>
+            </a>
+            <br>
+            <div class="box-topic">Due: {{task.end_date}}</div>
+            <div class="indicator">
+              <i class='bx bx-check'></i>
+              <span class="text">Started - {{task.started}}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div class="tasks-boxes" style="display: flex; flex-wrap: wrap; padding: 0 10px;">
+      <div class="recent-tasks box"
+        style="flex: 1; box-shadow: 0 0 10px 2px rgba(92, 143, 206, 0.5); padding: 35px; border-radius: 30px;">
+
+        <!-- this is the div for task -->
+        <div class="float-right">
+          <i class="bx bx-calendar-event" style="color: white;"></i>
+          <a href="{% url 'add-plan2' %}" style="text-decoration: none; color: #fff; ">Add plan</a>
+        </div>
+        <div class="title" style="color: cornflowerblue;">Your Plans</div>
+        <div class="tasks-details">
+          {% for plan in user_plans %}
+          <div class="card" style="width: 100%">
+            <div class="card-body">
+              <div style="display: flex; align-items: center;">
+                <h2 class="card-title" style="margin-right: 10px; color: #fff; ">{{ plan.title }}</h2>
+
+                <a href="{% url 'update-plan2' plan.id %}" style="text-decoration: none; font-style: italic; margin-left: auto;">
+                  <img src="{% static 'tasks/pen.svg' %}">
+                </a>
+
+                <a href="{% url 'confirm-plan-delete2' plan.id %}" style="text-decoration: none; font-style: italic; margin-left: auto;">
+                  <img src="{% static 'tasks/trash3.svg' %}">
+                </a>
+              </div>
+
+              <i class="bx bx-task"></i>
+              <a href="{% url 'create-task2' plan.id %}" style="text-decoration: none; font: italic;">Add task</a>
+              <hr>
+              {% for task in tasks %}
+              {% if task.plan.id == plan.id %}
+
+              <a href="{% url 'task_view2' task.id %}" class="card-text"
+                style="margin-bottom: 1px;  text-decoration: none; color: cadetblue; font-size: larger;">
+                {{ task.title }}
+              </a>
+
+              <i class="bx bx-delete"></i>
+              <a href="{% url 'update-task2' task.id %}" style="text-decoration: none; font: italic;"><img
+                  src="{% static 'tasks/pen.svg' %}"></a>
+
+              <a href="{% url 'confirm-task-delete2' task.id %}"
+                style="text-decoration: none; font: italic;  padding: 0 10px; "><img
+                  src="{% static 'tasks/trash3.svg' %}"></a><br>
+              <div style="display: inline-block; color: #fff;">
+                <input type="checkbox" id="completed-{{task.id}}" style="display: none;">
+                <label for="completed-{{task.id}}" class="card-link" style="margin-right: 10px;">Started
+                  <span
+                    style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc;"></span>
+                  <span
+                    style="display: inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: white; position: absolute; top: 2px; left: 2px;"></span>
+                </label>
+                <br>
+
+                <input type="checkbox" id="skipped-{{task.id}}" style="display: none;">
+                <label for="skipped-{{task.id}}" class="card-link">completed
+                  <span
+                    style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc;"></span>
+                  <span
+                    style="display: inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: white; position: absolute; top: 2px; left: 2px;"></span>
+                </label>
+              </div>
+              <br><br>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <br><br>
+          {% endfor %}
+          <br><br>
+
+        </div>
+        <div class="button">
+          <a href="{% url 'task_list2' %}">See All</a>
+        </div>
+      </div>
+      <!-- <div class="col-md-6" style="width: 50%; float: right;  padding: 0 100px;  box-shadow: 0 0 10px 2px rgba(92, 143, 206, 0.5);
+       border-radius: 30px;  "> -->
+
+      <div class="col-md-6"
+        style="flex-basis: 50%; padding: 0 100px; box-shadow: 0 0 10px 2px rgba(92, 143, 206, 0.5); border-radius: 30px;">
+        
+        <div class="title" style="padding-top: 20px; font-style: italic; color: #fff;">{{user.first_name}}'s Calendar</div>
+        <br>
+
+        <div id="calendar" style = "color: #fff;"> </div>
+
+
+
+
+
+      </div>
+    </div>
+    </div>
+    {{"<"}}{{'script>'}}
+      // caleandar(element, events, settings);
+      // this calendar has to have what to display for it to show 
+
+      var tasks = [
+      {% for task in tasks %}
+
+      {
+      "Date": new Date("{{task.start_year}}", "{{task.start_month}}", "{{task.start_day}}"),
+      "Title": "{{task.title}}",
+      "Link": "/darkmode/task/{{task.id}}"
+
+
+
+      },
+
+
+      {% endfor %}
+      ];
+      console.log('success')
+      {{"</script>"}}
+      <script>
+        var element = caleandar(document.getElementById('calendar'), tasks);
+      </script>
+      <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+
+        sidebarBtn.onclick = function () {
+          sidebar.classList.toggle("active");
+          if (!sidebar.classList.contains("active")) {
+            sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+          } else {
+            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+          }
+        };
+
+
+        const chevronDown = document.querySelector('.profile-details .bx-chevron-down');
+        const adminLoginForm = document.querySelector('.profile-details .admin-login-form');
+
+        chevronDown.addEventListener('click', () => {
+          adminLoginForm.style.display = 'block';
+        });
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdownToggle.addEventListener('click', function () {
+          dropdownMenu.classList.toggle('active');
+        });
+
+      </script>
+
+</body>
+
+</html>

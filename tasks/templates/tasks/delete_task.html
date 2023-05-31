@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{% static 'tasks/add_task.css' %}">
+</head>
+
+<body>
+  <div id="user">
+    {{user.username}}
+  </div>
+ 
+
+  <div id="dashboard" class="blur">
+    {% include 'tasks/dashboard.html' %}
+  </div>
+  <form>
+    
+   <p>Are you sure you want to delete "{{task.title}}" task?</p>
+   <a href="{% url 'delete-task' task.id %}" style="text-decoration: none;">Yes</a>&nbsp; &nbsp; <a href="{{request.META.HTTP_REFERER}}" style="text-decoration: none;">Cancel</a>
+  </form>
+  
+</body>
+
+</html>

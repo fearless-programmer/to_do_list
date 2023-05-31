@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'darkmode/dark_task.css' %}">
+    <style>
+        .delete-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            padding: 10px;
+            /* border: 1px solid #000; */
+            text-decoration: none;
+            color: #653e3e;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="user">
+        {{user.username}}
+    </div>
+
+    <div id="dashboard" class="blur">
+        {% include 'darkmode/darkboard.html' %}
+    </div>
+
+    <form  style = "color: #fff;" >
+        <a href="{% url 'darkboard' %}" style="text-decoration: none; font-size: x-large; color: red;">ⓧ</a>
+        <a href="{% url 'confirm-task-delete2' task.id %}" class="delete-btn"><img src="{% static 'tasks/trash3.svg' %}"></a>
+        <ul>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0;">{{ task.title }}</h2>
+                <a href="{% url 'update-task2' task.id %}" style="text-decoration: none; font: italic;"><img src="{% static 'tasks/pen.svg' %}"></a>
+            </div>
+            
+            
+            <hr>
+            <br>
+            <p style="color:#F5F5DC;">{{ task.description }}</p>
+            <br><br>
+            <p style="color: #F5F5DC ;">Start Date: {{ task.start_date }}</p>
+            <br>
+            <p style="color: #F5F5DC ;">End Date: {{ task.end_date }}</p>
+            <br>
+            {% if task.started %}
+            <p style="color: green" >Status: Started</p>
+            {% elif task.completed %}
+            <p style="color: orange">Status: Completed</p>
+            {% elif task.skipped %}
+            <p style="color: red">Status: Skipped</p>
+            {% elif task.forgotten %}
+            <p>Status: Forgotten</p>
+            {% else %}
+            <p>Status: Not Started</p>
+            {% endif %}
+            <br>
+        </ul>
+        <br>
+    </form>
+
+   
+</body>
+
+</html>

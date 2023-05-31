@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plan Hub - We Got You</title>
+    <link rel="stylesheet" href="{% static 'home/sign_up.css' %}">
+   
+</head>
+
+<body>
+    <div class="container">
+        <h1>Plan Hub</h1>
+        <h2>We Got You</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>First Name:</label>
+            {{form.first_name}}
+            <label>Last Name:</label>
+            {{form.last_name}}
+            <label>UserName:</label>
+            {{form.username}}
+            <label>Email:</label>
+            {{form.email}}
+            <label>Password:</label>
+            {{form.password1}}
+            <label>Password confirmation:</label>
+            {{form.password2}}
+            {{form.errors}}
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+    </div>
+</body>
+
+</html>

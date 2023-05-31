@@ -1,0 +1,134 @@
+.cld-main {
+  width: 350px !important;
+}
+
+.cld-main a {
+  color: #0080FF !important;
+}
+
+.cld-main svg {
+  fill: #0080FF !important;
+}
+
+.cld-datetime {
+  position: relative !important;
+  width: 66% !important;
+  min-width: 100px !important;
+  max-width: 300px !important;
+  margin: auto !important;
+  overflow: hidden !important;
+}
+
+.cld-datetime .today {
+  position: relative !important;
+  float: left !important;
+  width: calc(100% - 40px) !important;
+  margin: auto !important;
+  text-align: center !important;
+}
+
+.cld-nav {
+  position: relative !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 2px !important;
+}
+
+.cld-nav:hover {
+  cursor: pointer !important;
+}
+
+.cld-nav:hover svg {
+  fill: #005EFF !important;
+}
+
+.cld-rwd {
+  float: left !important;
+}
+
+.cld-fwd {
+  float: right !important;
+}
+
+
+.cld-labels,
+.cld-days {
+  padding-left: 0 !important;
+}
+
+.cld-label,
+.cld-day {
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  width: 14.28% !important;
+  text-align: center !important;
+}
+
+.cld-day {
+  border: 1px solid #eee !important;
+}
+
+.cld-day.today .cld-number {
+  background: #0080FF !important;
+  color: #fff !important;
+}
+
+.cld-day.disableDay {
+  opacity: 0.5 !important;
+}
+
+.cld-day.nextMonth,
+.cld-day.prevMonth {
+  opacity: 0.33 !important;
+}
+
+.cld-number {
+  position: relative !important;
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+.cld-title {
+  position: absolute !important;
+  z-index: 5 !important;
+  display: none !important;
+  top: 35px !important;
+  left: 0 !important;
+  padding: 5px 10px !important;
+  background: #fff !important;
+  white-space: nowrap !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  font-size: 12px !important;
+}
+
+.cld-number:hover .cld-title {
+  display: block !important;
+}
+
+.cld-title::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -7.5px !important;
+  left: 10px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 7.5px solid transparent !important;
+  border-right: 7.5px solid transparent !important;
+
+  border-bottom: 7.5px solid #ccc !important;
+}
+
+.cld-number.eventday {
+  font-weight: bold !important;
+  color: #0080FF !important;
+}
+
+.cld-number.eventday:hover {
+  cursor: pointer !important;
+  background: #eee !important;
+}
+
+.today .cld-number.eventday:hover {
+  background: #005EFF !important;
+}

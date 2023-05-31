@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{% static 'darkmode/dark_task.css' %}">
+</head>
+
+<body>
+  <div id="user">
+    {{user.username}}
+  </div>
+
+  <div id="dashboard" class="blur">
+    {% include 'darkmode/darkboard.html' %}
+  </div>
+
+  <form action="" method="POST"  style = "color: #fff;" >
+    <a href="{% url 'darkboard' %}"><img width="30px" src="{% static 'tasks/arrow-left.svg' %}"></a>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" id="addTaskBtn">save</button>
+  </form>
+  
+</body>
+
+</html>

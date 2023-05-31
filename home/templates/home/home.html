@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Hub</title>
+    
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="{% static 'home/home.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <img src="{% static 'home/logo.jpg' %}" alt="Plan Hub Logo">
+
+        <h1>Plan Hub</h1>
+        <p style="font-size:20px">We Got You...😉</p>
+        <div class="login-signup">
+            <a href=" {% url 'login' %} " style="color:blue; font-size:15px;" class="btn">Log In</a>
+            <a href="{% url 'sign_up' %}" style="color:blue;font-size:15px;"class="btn">Sign Up</a>
+        </div>
+    </header>
+    <section class="objectives">
+        <h3>Why Plan Hub?</h3>
+        <div class="card-container">
+            <div class="card bg-secondary">
+                <h3>Organize your daily activities</h3>
+                <p>Plan Hub provides a safe space to structure your plans and make sure you never miss a task.</p>
+            </div>
+            <div class="card bg-secondary">
+                <h3>Automated Reminder</h3>
+                <p>Get automated reminders to stay on track and make sure you complete your tasks on time.</p>
+            </div>
+ 
+            <div class="card bg-secondary">
+                <h3>Stay on Schedule</h3>
+                <p>With Plan Hub, you can easily plan your day and stay on schedule, making sure you have time for
+                    everything you need to do.</p>
+            </div>
+            <div class="card bg-secondary">
+                <h3>Improved Productivity</h3>
+                <p>By using Plan Hub, you'll be able to increase your productivity and get more done in less time.</p>
+            </div>
+        </div>
+         <!-- Footer Section Start -->
+<footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>About Us</h2>
+        <p>Our Plan hub Management website!
+  
+  offers a range of Features designed to make tasks Management simple and efficient. This include task creation and assignment, deletion, progress tracking, deadline reminders and update tasks. Our team are all working together to provide the best possible experience for our users</p>
+      </div>
+      <div class="footer-center">
+        <h2>Contact Us</h2>
+        <ul>
+          <li><i class="fa fa-map-marker"></i> 1234 Makerere, Kampala Uganda</li>
+          <li><i class="fa fa-phone"></i> (123) 456-7890</li>
+          <li><i class="fa fa-envelope"></i> info@planhub.com</li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <h2>Follow Us</h2>
+        <div class="social-icons">
+          <a href="https://www.google.com" class="fa fa-google"></a>
+          <a href="https://www.youtube.com" class="fa fa-youtube"></a>
+          <a href="https://www.pinterest.com" class="fa fa-pinterest"></a>
+          <a href="http://your-rss-feed-url" class="fa fa-rss"></a>
+	
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="text">
+      <span>Created By <a href="#">CodeX Group</a> | &#169; 2023 All Rights Reserved</span>
+    </div>
+  </footer>
+    </section>
+</body>
+</html>

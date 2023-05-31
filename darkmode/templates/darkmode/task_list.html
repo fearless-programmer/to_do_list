@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'darkmode/dark_task.css' %}">
+</head>
+
+<body>
+    <div id="user">
+        {{user.username}}
+    </div>
+
+
+    <div id="dashboard" class="blur">
+        {% include 'darkmode/darkboard.html' %}
+    </div>
+    <form  style = "color: #fff;">
+        <a href="{% url 'darkboard' %}"><img width="30px" src="{% static 'tasks/arrow-left.svg' %}"></a>
+
+        <h1 style="font-style: oblique; color: white; ">{{user.first_name}}'s Tasks </h1>
+        <hr>
+        <br>
+
+        <ul>
+            {% for task in tasks %}
+            <li><a href="{% url 'task_view2' task.id %}" style="text-decoration: none; color: #97f597; ">{{ task.title }}</a></li>
+
+            {% empty %}
+            <li>No tasks found.</li>
+            {% endfor %}
+        </ul>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+#user {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-style: italic;
+  font-size: smaller;
+}
+
+
+/* styles for input fields */
+input[type="text"],
+select {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 85px;
+  border: none;
+}
+
+/* styles for input field placeholders */
+::placeholder {
+  color: #A9A9A9;
+}
+
+/* styles for add task button */
+
+#addTaskBtn {
+position: absolute;
+bottom: 20px;
+right: 10px;
+padding: 10px; /* size */
+border-radius: 5px; /*the round edges */
+border: none;
+background-color: #4682B4;
+color: #F5DEB3;
+font-size: 16px;
+
+}
+@media only screen and (max-width: 480px) {/*targets the screen with screen width of 480 px*/
+  form {
+      max-width: 100%;
+      /* other mobile styles */
+  }
+}
+
+
+/* styles for blurred background */
+.blur {
+  filter: blur(5px) brightness(60%);
+}
+
+
+/* styles for form */
+form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background-color: #43c1f3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  max-height: 100%;
+  overflow: auto;
+}
+
+@media (min-width: 768px) {
+  form {
+    width: 50%;
+  }
+}

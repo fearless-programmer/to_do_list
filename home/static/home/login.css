@@ -1,0 +1,92 @@
+body {
+    background-image: url('image.jpg');
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  #container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  label {
+    font-size: 35px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border-radius: 50px;
+    border: None;
+    margin-bottom: 40px;
+    width: 300px;
+    font-size: 18px;
+    background-color: #e7e1e1;
+    color: black;
+  }
+
+  .login-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #4aa8c4;
+  }
+
+  #forgot-password {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  #signup {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align:center;
+
+  }
+  #signup-link {
+    color: #61dafb;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  #signup-link:hover {
+    color: #4aa8c4;
+  }
+  h1 {
+    text-align: center;
+  }
+.social-media-icons a {
+  line-height: 1;
+  size: 30px;
+  padding-top: 10px;
+  margin: 0 10px;
+  color: #8d7cdb;
+  text-decoration: none;
+}
+

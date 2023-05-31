@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{% static 'tasks/add_task.css' %}">
+  
+</head>
+
+<body>
+
+
+
+  <div id="dashboard" class="blur">
+    {% include 'tasks/dashboard.html' %}
+  </div>
+  <form action="" method="post">
+    <a href="{% url 'dashboard' %}"><img width="30px" src="{% static 'tasks/arrow-left.svg' %}"></a>
+    {% csrf_token %}
+    <h2>Add Task</h2>
+    <p style="font-size: small; font-style: italic; color: dimgray;">Before u add a task first add a plan at the dashboard</p>
+    <label for="plan">Plan</label>
+    <select id="plan" name="plan">
+      <option>--------</option>
+      {% for plan in plans %}
+      {% if plan.title == parent_plan.title %}
+      <option value="{{ plan.id }}" selected>{{ plan.title }}</option>
+      {% else %}
+      <option value="{{ plan.id }}">{{ plan.title }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+    <hr>
+    <br>
+    <label for="name">Task Name</label>
+    <input type="text" id="name" name="title" placeholder="Enter name of task">
+    <hr>
+    <label for="description">Task Description</label>
+    <input type="text" id="description" name="description" placeholder="Enter task description">
+    <hr>
+    <br>
+    <div class="start">
+      <div class="date-fields" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <div class="start" style="display: inline-block; width: 48%;">
+    <label>Start Date</label>
+    <br>
+    <input type='date' id="start_date" name="start_date" placeholder="enter startdate" required>
+  </div>
+  <div class="end" style="display: inline-block; width: 48%;">
+    <label>End Date </label>
+    <br>
+    <input type='date' id="end_date" name="end_date" placeholder="enter startdate" required>
+  </div>
+</div>
+<hr>
+<br>
+
+    <div class="start">
+      <div style="display: flex;flex-wrap: wrap; justify-content: space-between;">
+        <div class="start" style="display: inline-block; width: 48%;">
+          <label>Start Time</label>
+          <br>
+          <input type='time' id="start_time" name="start_time" placeholder="enter start time" required>
+        </div>
+        <div class="end" style="display: inline-block; width: 48%;">
+          <label>End Time </label>
+          <br>
+          <input type='time' id="end_time" name="end_time" placeholder="enter end time" required>
+          
+        </div>
+        
+      </div>
+      <hr>
+      
+
+    <button id="addTaskBtn" type="submit">Add Task</button>
+  </form>
+
+</body>
+
+</html>
